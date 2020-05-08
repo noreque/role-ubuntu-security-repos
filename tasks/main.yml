@@ -1,0 +1,38 @@
+---
+# tasks file for noreque-ubuntu-repos-security
+
+- name: Add Firejail repository
+  apt_repository:
+    repo: ppa:deki/firejail
+    state: present
+
+- name: Add Tor Project Apt signing key
+  apt_key:
+    id: A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
+    url: https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc
+    state: present
+
+- name: Add Tor repository
+ apt_repository:
+   repo: deb https://deb.torproject.org/torproject.org stable main
+   state: present
+
+- name: Add Tor Project keyring
+  package:
+    name: deb.torproject.org-keyring
+    state: latest
+
+- name: Add Pass Utility repository
+  apt_repository:
+    repo: ppa:mozgiii/pass
+    state: present
+
+- name: Add VeraCrypt repository
+  apt_repository:
+    repo: ppa:unit193/encryption
+    state: present
+
+- name: Add Wireshark repository
+  apt_repository:
+    repo: ppa:wireshark-dev/stable
+    state: present
